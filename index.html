@@ -4,7 +4,125 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Toop Tex - منتجات طبية</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Color Variables */
+    :root {
+      --primary-color: #005468;     /* Main theme color */
+      --secondary-color: #f5821f;   /* Accent color */
+      --background-color: #ffffff;  /* Background color */
+      --text-color: #504c6a;        /* Text and dark elements */
+      --icon-filter: grayscale(1) contrast(2) brightness(1.2);
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      font-size: 16px; /* Base font size for reference */
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px 0;
+    }
+
+    .hero-section {
+      padding: 40px 20px;
+      background-color: #eef2f3;
+      margin-top: 20px;
+    }
+
+    .hero-section h2 {
+      font-size: 1.2rem;
+      max-width: 90%;
+      margin: auto;
+    }
+
+    .hero-section img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      margin-top: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .logos-section {
+      padding: 40px 20px;
+      background-color: #f7f9fb;
+    }
+
+    .logos img {
+      width: 150px;
+      margin: 10px;
+      border: 1px solid #ccc;
+      transition: transform 0.3s ease;
+    }
+
+    .logos img:hover {
+      transform: scale(1.05);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px 0;
+      background-color: #ffffff;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      text-decoration: none;
+      color: var(--text-color);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1rem;
+    }
+
+    .social-links img {
+      width: 1.5em;
+      height: 1.5em;
+      margin-bottom: 5px;
+      filter: var(--icon-filter);
+      transition: filter 0.3s ease;
+    }
+
+    .social-links img:hover {
+      filter: grayscale(0) brightness(1);
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px 0;
+      font-size: 14px;
+    }
+
+    footer button {
+      cursor: pointer;
+      background-color: var(--secondary-color);
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    footer button:hover {
+      background-color: #d96f00;
+    }
+
+    footer a {
+      color: #ffc107;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -62,6 +180,34 @@
     </p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Optional: Image load error logging
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+      img.addEventListener('error', () => {
+        console.error(`Image failed to load: ${img.src}`);
+      });
+    });
+
+    // Email copy functionality
+    document.getElementById('copy-email').addEventListener('click', () => {
+      const email = 'toopkhayata@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        alert('تم نسخ البريد الإلكتروني!');
+      }).catch(err => {
+        console.error('Failed to copy email: ', err);
+      });
+    });
+
+    // Phone number copy functionality
+    document.getElementById('copy-phone').addEventListener('click', () => {
+      const phone = '00963944305909';
+      navigator.clipboard.writeText(phone).then(() => {
+        alert('تم نسخ رقم الهاتف!');
+      }).catch(err => {
+        console.error('Failed to copy phone number: ', err);
+      });
+    });
+  </script>
 </body>
 </html>
