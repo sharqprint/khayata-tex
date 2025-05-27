@@ -1,149 +1,322 @@
-import { useState } from 'react';
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Toop Tex - منتجات طبية</title>
+  <style>
+    /* Color Variables */
+    :root {
+      --primary-color: #005468;
+      --secondary-color: #f5821f;
+      --background-color: #ffffff;
+      --text-color: #504c6a;
+      --icon-filter: grayscale(1) contrast(2) brightness(1.2);
+      --transition-time: 0.3s;
+      --section-padding: 60px 20px;
+    }
 
-export default function App() {
-  const [copiedEmail, setCopiedEmail] = useState(false);
-  const [copiedPhone, setCopiedPhone] = useState(false);
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-  const copyToClipboard = (text, type) => {
-    navigator.clipboard.writeText(text).then(() => {
-      if (type === 'email') setCopiedEmail(true);
-      if (type === 'phone') setCopiedPhone(true);
-      setTimeout(() => {
-        if (type === 'email') setCopiedEmail(false);
-        if (type === 'phone') setCopiedPhone(false);
-      }, 2000);
-    }).catch(err => console.error('Failed to copy:', err));
-  };
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      font-size: 16px;
+      line-height: 1.6;
+    }
 
-  return (
-    <div className="font-sans text-center bg-white text-[#504c6a]">
-      {/* Header */}
-      <header className="bg-[#005468] text-white p-6 shadow-md">
-        <h1 className="text-2xl md:text-3xl font-bold">Khayyata Tex Co.</h1>
-        <p>من إنتاج السيد أحمد خيّاطة</p>
-      </header>
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 30px 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
 
-      {/* Hero Section */}
-      <section className="animate-fadeInUp opacity-0 transform translate-y-5 duration-1000 ease-out">
-        <div className="hero-section py-16 px-6 bg-gradient-to-b from-[#eef2f3] to-[#f9fbfc]">
-          <h2 className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            نقدم لكم جميع المنتجات الطبية، بما في ذلك الأحزمة والمشدات والعوازل الطبية ولوازم المستشفيات، بجودة وكفاءة عالية
-          </h2>
-          <img
-            src="top Tex.png"
-            alt="Top Tex.png"
-            onError={() => console.error('Image failed to load: top Tex.png')}
-            className="mt-8 w-full max-w-md mx-auto border border-gray-300 rounded shadow-lg hover:scale-105 transition-transform duration-300"
-          />
-        </div>
-      </section>
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
 
-      {/* Logos Section */}
-      <section className="logos-section py-16 px-6 bg-[#f7f9fb]">
-        <h3 className="text-xl font-semibold mb-6">شركاتنا</h3>
-        <div className="flex flex-wrap justify-center gap-6">
-          <img
-            src="logo1.png"
-            alt="logo1.png"
-            onError={() => console.error('Image failed to load: logo1.png')}
-            className="w-40 sm:w-48 border border-gray-300 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300"
-          />
-          <img
-            src="logo2.png"
-            alt="logo2.png"
-            onError={() => console.error('Image failed to load: logo2.png')}
-            className="w-40 sm:w-48 border border-gray-300 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300"
-          />
-        </div>
-      </section>
+    .hero-section {
+      padding: var(--section-padding);
+      background: linear-gradient(to bottom, #eef2f3, #f9fbfc);
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+    }
 
-      {/* Social Links */}
-      <section className="social-links py-12 px-6 bg-white flex flex-col md:flex-row justify-center gap-10 flex-wrap">
-        <a
-          href="https://www.facebook.com/profile.php?id=100063896384835 "
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col items-center text-[#504c6a] no-underline hover:translate-y-[-5px] transition-transform duration-300"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png "
-            alt="Facebook Icon"
-            className="w-10 h-10 mb-2 filter grayscale contrast-200 brightness-120 hover:grayscale-0 hover:brightness-100 transition-all duration-300"
-          />
-          Facebook
-        </a>
-        <a
-          href="https://wa.me/963944305909 "
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col items-center text-[#504c6a] no-underline hover:translate-y-[-5px] transition-transform duration-300"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png "
-            alt="WhatsApp Icon"
-            className="w-10 h-10 mb-2 filter grayscale contrast-200 brightness-120 hover:grayscale-0 hover:brightness-100 transition-all duration-300"
-          />
-          WhatsApp
-        </a>
-        <a
-          href="https://www.instagram.com/ahmad_khayata.79/ "
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col items-center text-[#504c6a] no-underline hover:translate-y-[-5px] transition-transform duration-300"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png "
-            alt="Instagram Icon"
-            className="w-10 h-10 mb-2 filter grayscale contrast-200 brightness-120 hover:grayscale-0 hover:brightness-100 transition-all duration-300"
-          />
-          Instagram
-        </a>
-      </section>
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-      {/* Footer */}
-      <footer className="bg-[#005468] text-white p-8">
-        <p className="mb-2">
-          البريد الإلكتروني:{' '}
-          <button
-            onClick={() => copyToClipboard('toopkhayata@gmail.com', 'email')}
-            className={`cursor-pointer bg-[#f5821f] px-4 py-2 rounded transition-colors duration-300 ${copiedEmail ? 'bg-green-500' : ''}`}
-          >
-            {copiedEmail ? 'تم النسخ!' : 'toopkhayata@gmail.com'}
-          </button>
-        </p>
-        <p className="mb-4">
-          رقم الهاتف:{' '}
-          <button
-            onClick={() => copyToClipboard('00963944305909', 'phone')}
-            className={`cursor-pointer bg-[#f5821f] px-4 py-2 rounded transition-colors duration-300 ${copiedPhone ? 'bg-green-500' : ''}`}
-          >
-            {copiedPhone ? 'تم النسخ!' : '00963944305909'}
-          </button>
-        </p>
-        <p>
-          Designed by{' '}
-          <a
-            href="https://www.instagram.com/fateh_moathen/ "
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-yellow-300 underline hover:text-white transition-colors duration-300"
-          >
-            Fateh
-          </a>
-        </p>
-      </footer>
+    .hero-section h2 {
+      font-size: 1.3rem;
+      max-width: 90%;
+      margin: auto;
+      color: var(--text-color);
+    }
 
-      <style jsx>{`
-        @keyframes fadeInUp {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeInUp {
-          animation: fadeInUp 1s forwards;
-        }
-      `}</style>
+    .hero-section img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      margin-top: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform var(--transition-time) ease;
+    }
+
+    .hero-section img:hover {
+      transform: scale(1.02);
+    }
+
+    .about-section {
+      padding: var(--section-padding);
+      background-color: #f7f9fb;
+    }
+
+    .about-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .about-section p {
+      max-width: 80%;
+      margin: auto;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .logos-section {
+      padding: var(--section-padding);
+      background-color: #ffffff;
+    }
+
+    .logos-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .logos {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .logos img {
+      width: 160px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: transform var(--transition-time) ease, box-shadow var(--transition-time) ease;
+    }
+
+    .logos img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: var(--section-padding);
+      background-color: #f7f9fb;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      text-decoration: none;
+      color: var(--text-color);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1rem;
+      transition: transform var(--transition-time) ease;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-5px);
+    }
+
+    .social-links img {
+      width: 2em;
+      height: 2em;
+      margin-bottom: 8px;
+      filter: var(--icon-filter);
+      transition: filter var(--transition-time) ease, transform var(--transition-time) ease;
+    }
+
+    .social-links img:hover {
+      filter: grayscale(0) brightness(1);
+      transform: scale(1.1);
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 30px 20px;
+      font-size: 14px;
+    }
+
+    footer button {
+      cursor: pointer;
+      background-color: var(--secondary-color);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      margin: 5px;
+      transition: background-color var(--transition-time) ease;
+    }
+
+    footer button:hover {
+      background-color: #d96f00;
+    }
+
+    footer a {
+      color: #ffc107;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+
+    .copyright {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #cccccc;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 600px) {
+      .hero-section h2,
+      .about-section p {
+        font-size: 1rem;
+      }
+
+      .logos img {
+        width: 130px;
+      }
+
+      .social-links {
+        gap: 20px;
+      }
+
+      footer button {
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Khayyata Tex Co.</h1>
+    <p>من إنتاج السيد أحمد خيّاطة</p>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <h2>
+      نقدم لكم جميع المنتجات الطبية، بما في ذلك الأحزمة والمشدات والعوازل الطبية ولوازم المستشفيات، بجودة وكفاءة عالية
+    </h2>
+    <img src="top Tex.png" alt="Top Tex.png" onerror="console.error('Image failed to load: top Tex.png')">
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <h3>عن شركتنا</h3>
+    <p>
+      تأسست شركة Khayyata Tex على يد السيد أحمد خيّاطة، وتُعنى بتوفير منتجات طبية عالية الجودة مثل الأحزمة والمشدات والعوازل الطبية ولوازم المستشفيات.
+      نحرص على تقديم خدمات متميزة ومنتجات موثوقة تلبي احتياجات عملائنا الكرام في مختلف المجالات الطبية.
+    </p>
+  </section>
+
+  <!-- Logos Section -->
+  <section class="logos-section">
+    <h3>شركاتنا</h3>
+    <div class="logos">
+      <img src="logo1.png" alt="logo1.png" onerror="console.error('Image failed to load: logo1.png')">
+      <img src="logo2.png" alt="logo2.png" onerror="console.error('Image failed to load: logo2.png')">
     </div>
-  );
-}
+  </section>
+
+  <!-- Social Links -->
+  <section class="social-links">
+    <a href="https://www.facebook.com/profile.php?id=100063896384835 " target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png " alt="Facebook Icon">
+      Facebook
+    </a>
+    <a href="https://wa.me/963944305909 " target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png " alt="WhatsApp Icon">
+      WhatsApp
+    </a>
+    <a href="https://www.instagram.com/ahmad_khayata.79/ " target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png " alt="Instagram Icon">
+      Instagram
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      البريد الإلكتروني: 
+      <button id="copy-email">toopkhayata@gmail.com</button>
+    </p>
+    <p>
+      رقم الهاتف: 
+      <button id="copy-phone">00963944305909</button>
+    </p>
+    <p class="copyright">
+      جميع الحقوق محفوظة &copy; 2025 - Khayyata Tex Co.
+    </p>
+    <p>
+      Designed by 
+      <a href="https://www.instagram.com/fateh_moathen/ " target="_blank">Fateh</a>
+    </p>
+  </footer>
+
+  <script>
+    // Optional: Image load error logging
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+      img.addEventListener('error', () => {
+        console.error(`Image failed to load: ${img.src}`);
+      });
+    });
+
+    // Email copy functionality
+    document.getElementById('copy-email').addEventListener('click', () => {
+      const email = 'toopkhayata@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        alert('تم نسخ البريد الإلكتروني!');
+      }).catch(err => {
+        console.error('Failed to copy email: ', err);
+      });
+    });
+
+    // Phone number copy functionality
+    document.getElementById('copy-phone').addEventListener('click', () => {
+      const phone = '00963944305909';
+      navigator.clipboard.writeText(phone).then(() => {
+        alert('تم نسخ رقم الهاتف!');
+      }).catch(err => {
+        console.error('Failed to copy phone number: ', err);
+      });
+    });
+  </script>
+</body>
+</html>
